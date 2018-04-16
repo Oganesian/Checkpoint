@@ -1,0 +1,70 @@
+﻿<Controls:MetroWindow x:Class="Checkpoint.SearchInOrAddEmployees"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        BorderThickness="1"
+        BorderBrush="#FF086F9E"
+        Title="Поиск среди работников" Height="350" Width="300">
+    <Grid>
+        <TextBox x:Name="ID"
+                VerticalAlignment="Top"
+                Margin="0,24,0,0"
+                Width="180"
+                Height="40"
+                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                Controls:TextBoxHelper.IsWaitingForData="True"
+                Controls:TextBoxHelper.UseFloatingWatermark="True"
+                Controls:TextBoxHelper.Watermark="ID"
+                PreviewTextInput="OnlyDigits"
+                Style="{StaticResource LoginTextBox}">
+        </TextBox>
+        <TextBox x:Name="FullName"
+                VerticalAlignment="Top"
+                Margin="0,74,0,0"
+                Width="180"
+                Height="40"
+                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                Controls:TextBoxHelper.IsWaitingForData="True"
+                Controls:TextBoxHelper.UseFloatingWatermark="True"
+                Controls:TextBoxHelper.Watermark="ФИО"
+                Style="{StaticResource LoginTextBox}">
+        </TextBox>
+        <TextBox x:Name="Passport"
+                VerticalAlignment="Top"
+                Margin="0,124,0,0"
+                Width="180"
+                Height="40"
+                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                Controls:TextBoxHelper.IsWaitingForData="True"
+                Controls:TextBoxHelper.UseFloatingWatermark="True"
+                Controls:TextBoxHelper.Watermark="Серия и номер паспорта"
+                PreviewTextInput="OnlyDigits"
+                Style="{StaticResource LoginTextBox}">
+        </TextBox>
+        <TextBox x:Name="Organization"
+                VerticalAlignment="Top"
+                Margin="0,174,0,0"
+                Width="180"
+                Height="40"
+                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                Controls:TextBoxHelper.IsWaitingForData="True"
+                Controls:TextBoxHelper.UseFloatingWatermark="True"
+                Controls:TextBoxHelper.Watermark="Название организации"
+                Style="{StaticResource LoginTextBox}">
+        </TextBox>
+        <ComboBox x:Name="ConfirmedByTheOrganization" Width="180"
+                          Margin="0,224,0,0"
+                          Controls:TextBoxHelper.ClearTextButton="True"
+                          Controls:TextBoxHelper.Watermark="Подтверждён"
+                          Height="34"
+                          VerticalAlignment="Top">
+            <ComboBoxItem Content="Нет" ToolTip="Работник не подтверждён организацией"/>
+            <ComboBoxItem Content="Да" ToolTip="Работник подтверждён организацией"/>
+        </ComboBox>
+        <Button Name="SearchOrAdd" Content="Искать" HorizontalAlignment="Center" Margin="0,274,0,0" VerticalAlignment="Top" Width="100" Click="SearchOrAdd_Click"/>
+    </Grid>
+</Controls:MetroWindow>

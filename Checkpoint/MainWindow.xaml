@@ -1,0 +1,68 @@
+﻿<Controls:MetroWindow x:Class="Checkpoint.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
+        BorderThickness="1"
+        BorderBrush="#FF086F9E"
+        Title="Пропускной пункт" Height="520" Width="700">
+    <Grid>
+        <Grid x:Name="AuthGrid" Visibility="Visible">
+            <TextBox x:Name="loginBox"
+                VerticalAlignment="Top"
+                Margin="227,174,225,0"
+                Width="240"
+                Height="40"
+                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                Controls:TextBoxHelper.IsWaitingForData="True"
+                Controls:TextBoxHelper.UseFloatingWatermark="True"
+                Controls:TextBoxHelper.Watermark="Логин"
+                Style="{StaticResource LoginTextBox}">
+            </TextBox>
+            <PasswordBox x:Name="passwordBox"
+                 VerticalAlignment="Top"
+                Margin="227,224,225,0"
+                Width="240"
+                Height="40"
+                Controls:TextBoxHelper.ClearTextButton="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:TextBoxHelper.HasText), Mode=OneWay}"
+                Controls:TextBoxHelper.IsWaitingForData="True"
+                Controls:TextBoxHelper.UseFloatingWatermark="True"
+                Controls:TextBoxHelper.Watermark="Пароль"
+                Style="{StaticResource MetroButtonRevealedPasswordBox}" />
+            <Button Content="ВХОД" Height="35" Margin="226,274,224,0" Width="242" VerticalAlignment="Top" Click="Sign_In_Button_Click"/>
+        </Grid>
+        <Grid x:Name="MainGrid" Visibility="Hidden">
+            <TabControl x:Name="tabControl" Height="490" VerticalAlignment="Top" Margin="0,2,0,0" Controls:TabControlHelper.IsUnderlined="True" HorizontalAlignment="Left" Width="692" Controls:TabControlHelper.Underlined="SelectedTabItem" SelectionChanged="tabControl_SelectionChanged">
+                <TabItem x:Name="employees" Header="Работники" Background="White" Margin="0,0,0,0">
+                    <Grid Margin="0,0,0,0" Height="442" VerticalAlignment="Top" Background="White">
+                        <DataGrid x:Name="employeesGrid" IsReadOnly="True" SelectionMode="Single" GridLinesVisibility="All" Margin="0,0,-7,0" Height="380" VerticalAlignment="Top" />
+                        <Button Content="Поиск" HorizontalAlignment="Left" Margin="10,391,0,0" VerticalAlignment="Top" Width="150" Height="35" Click="Search_Click"/>
+                        <Button Content="Выбор" HorizontalAlignment="Center" Margin="0,391,175,0" VerticalAlignment="Top" Width="150" Height="35" Click="Employee_Click"/>
+                        <Button Content="Обновить" HorizontalAlignment="Center" Margin="220,391,50,0" VerticalAlignment="Top" Width="150" Height="35" Click="Update_Employee_Click"/>
+                        <Button Content="Добавить" HorizontalAlignment="Right" Margin="0,391,10,0" VerticalAlignment="Top" Width="150" Height="35" Click="Add_Employee_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="report" Header="Отчет" Background="White" Margin="0,0,0,0">
+                    <Grid Margin="0,0,0,0" Height="442" VerticalAlignment="Top" Background="White">
+                        <DataGrid x:Name="reportsGrid" IsReadOnly="True" SelectionMode="Single" GridLinesVisibility="All" Height="380"
+                            VerticalAlignment="Top" Margin="-3,-3,-3,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*"/>
+                        <Button Content="Зафиксировать вход" HorizontalAlignment="Left" Margin="50,391,0,0" VerticalAlignment="Top" Width="176" Height="35" Click="Enter_Click"/>
+                        <Button Content="Зафиксировать выход" HorizontalAlignment="Center" Margin="0,391,0,0" VerticalAlignment="Top" Width="176" Height="35" Click="Exit_Click"/>
+                        <Button Content="Поиск" HorizontalAlignment="Right" Margin="0,391,50,0" VerticalAlignment="Top" Width="176" Height="35" Click="Search_Report_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="reportsOfAllEmployees" Header="Все отчеты" Background="White" Margin="0,0,0,0">
+                    <Grid Margin="0,0,0,0" Height="442" VerticalAlignment="Top" Background="White">
+                        <DataGrid x:Name="allReportsGrid" IsReadOnly="True" SelectionMode="Single" GridLinesVisibility="All" Height="380" 
+                            VerticalAlignment="Top" Margin="-3,-3,-3,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*"/>
+                        <Button Content="Поиск" HorizontalAlignment="Center" Margin="0,391,0,0" VerticalAlignment="Top" Width="176" Height="35" Click="Search_All_Reports_Click"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>
